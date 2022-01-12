@@ -1,3 +1,29 @@
+# remBADGER
+
+Miro board for setup:
+https://miro.com/app/board/uXjVOWssa70=/
+
+A fork of Sett-h with:
+- Ability to brickDeposits (irreversible)
+- One time extra shares mint (to bring ppfs below 1)
+- Function to send more underlying to the vault (to increase ppfs)
+- Using BrikedStrategy (does nothing, no risk)
+
+## TODO
+[] Tests
+ [X] Mint and Brick permissions
+ [X] Brick blocks deposits
+ [X] Brick doesn't block withdraw
+ [X] Can mint only once
+ [X] Minting mints exactly amount specified
+ [X] Ppfs moves as expected (prev balance / new total supply)
+ 
+[] Lifetime workflow
+ - Deploy
+ - Seed with initial funds
+ - Issue more shares
+ [] Scripts
+
 # Badger Strategy V1 Brownie Mix
 
 - Video Introduction: https://youtu.be/FVbhgPYW_D0 (note follow installation and setup below before starting the video)

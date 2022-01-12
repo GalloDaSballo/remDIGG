@@ -75,7 +75,7 @@ def deployed():
     lpComponent = interface.IERC20(LP_COMPONENT)
     rewardToken = interface.IERC20(REWARD_TOKEN)
     
-    whale = accounts.at("0xb65cef03b9b89f99517643226d76e286ee999e77", force=True)
+    whale = accounts.at("0x4441776e6a5d61fa024a5117bfc26b953ad1f425", force=True)
     want.transfer(deployer, want.balanceOf(whale), {"from": whale})
 
 
@@ -90,6 +90,7 @@ def deployed():
         vault=sett,
         sett=sett,
         strategy=strategy,
+        governance=governance,
         # guestList=guestList,
         want=want,
         lpComponent=lpComponent,
@@ -98,7 +99,6 @@ def deployed():
 
 
 ## Contracts ##
-
 
 @pytest.fixture
 def vault(deployed):
@@ -134,7 +134,13 @@ def tokens():
 
 
 ## Accounts ##
+@pytest.fixture
+def governance(deployed):
+    return deployed.governance
 
+@pytest.fixture
+def rando():
+    return accounts[6]
 
 @pytest.fixture
 def deployer(deployed):
