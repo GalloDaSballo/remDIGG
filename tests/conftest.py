@@ -4,6 +4,7 @@ from brownie import (
     Controller,
     RemBadger,
     BrikedStrategy,
+    ERC20Upgradeable
 )
 from config import (
     BADGER_DEV_MULTISIG,
@@ -73,21 +74,15 @@ def deployed():
     want = interface.IERC20(WANT)
     lpComponent = interface.IERC20(LP_COMPONENT)
     rewardToken = interface.IERC20(REWARD_TOKEN)
+    
+    whale = accounts.at("0xb65cef03b9b89f99517643226d76e286ee999e77", force=True)
+    want.transfer(deployer, want.balanceOf(whale), {"from": whale})
 
-    ## Wire up Controller to Strart
-    ## In testing will pass, but on live it will fail
+
+    ## Wire up Controller to Strart
+    ## In testing will pass, but on live it will fail
     controller.approveStrategy(WANT, strategy, {"from": governance})
     controller.setStrategy(WANT, strategy, {"from": deployer})
-
-    ## Uniswap some tokens here
-    router = interface.IUniswapRouterV2("0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D")
-    router.swapExactETHForTokens(
-        0,  ## Mint out
-        ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", WANT],
-        deployer,
-        9999999999999999,
-        {"from": deployer, "value": 5000000000000000000},
-    )
 
     return DotMap(
         deployer=deployer,

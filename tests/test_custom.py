@@ -11,5 +11,16 @@ from helpers.time import days
 """
 
 
-def test_my_custom_test(deployed):
-    assert False
+def test_my_custom_test(deployer, sett, strategy, controller, want):
+    # Setup
+    startingBalance = want.balanceOf(deployer)
+
+    depositAmount = startingBalance // 2
+    assert startingBalance >= depositAmount
+    assert startingBalance >= 0
+    # End Setup
+
+    assert want.balanceOf(sett) == 0
+
+    want.approve(sett, MaxUint256, {"from": deployer})
+    sett.deposit(depositAmount, {"from": deployer})

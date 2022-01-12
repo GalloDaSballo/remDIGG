@@ -46,7 +46,7 @@ import "../interfaces/setth/IGac.sol";
     * DepositBricked to track when deposits can no longer be done (irreversible)
 */
 
-contract Rembadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgradeable {
+contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgradeable {
     using SafeERC20Upgradeable for IERC20Upgradeable;
     using AddressUpgradeable for address;
     using SafeMathUpgradeable for uint256;
