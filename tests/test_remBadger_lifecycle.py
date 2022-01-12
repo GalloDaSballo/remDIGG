@@ -28,8 +28,8 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
 
     assert sett.getPricePerFullShare() == 1e18
 
-    ## Mint 100 Million more shares
-    sett.mintExtra(100_000e18, {"from": governance})
+    ## Mint200k more shares
+    sett.mintExtra(2000e18, {"from": governance})
 
     last_ppfs = sett.getPricePerFullShare()
     assert last_ppfs < 1e18 ## We diluted
