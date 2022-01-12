@@ -33,7 +33,7 @@ def deploy():
     controller = Controller.deploy({"from": deployer})
     controller.initialize(BADGER_DEV_MULTISIG, strategist, keeper, BADGER_DEV_MULTISIG)
 
-    sett = SettV4.deploy({"from": deployer})
+    sett = RemBadger.deploy({"from": deployer})
     sett.initialize(
         WANT,
         controller,
@@ -56,7 +56,7 @@ def deploy():
     # sett.setGuestList(guestList, {"from": governance})
 
     ## Start up Strategy
-    strategy = MyStrategy.deploy({"from": deployer})
+    strategy = BrikedStrategy.deploy({"from": deployer})
     strategy.initialize(
         BADGER_DEV_MULTISIG,
         strategist,

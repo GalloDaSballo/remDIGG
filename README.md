@@ -8,7 +8,7 @@
 
 ## What you'll find here
 
-- Basic Solidity Smart Contract for creating your own Badger Strategy ([`contracts/MyStrategy.sol`](contracts/MyStrategy.sol))
+- Basic Solidity Smart Contract for creating your own Badger Strategy ([`contracts/BrikedStrategy.sol`](contracts/BrikedStrategy.sol))
 
 - Interfaces for some of the most used DeFi protocols on ethereum mainnet. ([`interfaces`](interfaces))
 - Dependencies for OpenZeppelin and other libraries. ([`deps`](deps))
@@ -98,7 +98,7 @@ Deployment will set up a Vault, Controller and deploy your strategy
 To ship a valid strategy, that will be evaluated to deploy on mainnet, with potentially $100M + in TVL, you need to:
 
 1. Add custom config in `/config/__init__.py`
-2. Write the Strategy Code in MyStrategy.sol
+2. Write the Strategy Code in BrikedStrategy.sol
 3. Customize the StrategyResolver in `/config/StrategyResolver.py` so that snapshot testing can verify that operations happened correctly
 4. Write any extra test to confirm that the strategy is working properly
 
@@ -114,14 +114,14 @@ Set these up in `/config/__init__.py` this mix will automatically be set up for 
 
 ## Implementing Strategy Logic
 
-[`contracts/MyStrategy.sol`](contracts/MyStrategy.sol) is where you implement your own logic for your strategy. In particular:
+[`contracts/BrikedStrategy.sol`](contracts/BrikedStrategy.sol) is where you implement your own logic for your strategy. In particular:
 
 - Customize the `initialize` Method
-- Set a name in `MyStrategy.getName()`
-- Set a version in `MyStrategy.version()`
-- Write a way to calculate the want invested in `MyStrategy.balanceOfPool()`
-- Write a method that returns true if the Strategy should be tended in `MyStrategy.isTendable()`
-- Set a version in `MyStrategy.version()`
+- Set a name in `BrikedStrategy.getName()`
+- Set a version in `BrikedStrategy.version()`
+- Write a way to calculate the want invested in `BrikedStrategy.balanceOfPool()`
+- Write a method that returns true if the Strategy should be tended in `BrikedStrategy.isTendable()`
+- Set a version in `BrikedStrategy.version()`
 - Invest your want tokens via `Strategy._deposit()`.
 - Take profits and repay debt via `Strategy.harvest()`.
 - Unwind enough of your position to payback withdrawals via `Strategy._withdrawSome()`.
@@ -204,7 +204,7 @@ $ brownie run scripts/production_deploy.py --network mainnet
 
 You will be prompted to enter your desired deployer account and keystore password, and then the contracts will be deployed.
 
-3. This script will deploy a Controller, a SettV4 and your strategy under upgradable proxies. It will also set your deployer account as the governance for the three of them so that you can configure them and control them during testing stage. The script will also set the rest of the permissioned actors based on the latest entries from the Badger Registry.
+3. This script will deploy a Controller, a RemBadger and your strategy under upgradable proxies. It will also set your deployer account as the governance for the three of them so that you can configure them and control them during testing stage. The script will also set the rest of the permissioned actors based on the latest entries from the Badger Registry.
 
 ## Production Parameters Verification
 

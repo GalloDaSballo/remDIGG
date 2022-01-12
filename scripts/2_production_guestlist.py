@@ -6,7 +6,7 @@ from brownie import (
     AdminUpgradeabilityProxy,
     VipCappedGuestListWrapperUpgradeable,
     BadgerRegistry,
-    SettV4,
+    RemBadger,
 )
 
 from config import REGISTRY
@@ -67,7 +67,7 @@ def main():
     assert guestlist.owner() == governance
 
     # Sets guestlist on Vault (Requires dev == Vault's governance)
-    vault = SettV4.at(vaultAddr)
+    vault = RemBadger.at(vaultAddr)
     vault.setGuestList(guestlist.address, {"from": dev})
 
 
