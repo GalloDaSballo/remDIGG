@@ -23,13 +23,14 @@ def deployed():
     """
     Deploys, vault, controller and strats and wires them up for you to test
     """
-    deployer = accounts[0]
+    a0 = accounts[0]
 
-    strategist = deployer
-    keeper = deployer
-    guardian = deployer
+    strategist = a0
+    keeper = a0
+    guardian = a0
 
     governance = accounts.at(BADGER_DEV_MULTISIG, force=True)
+    deployer = governance
 
     controller = Controller.deploy({"from": deployer})
     controller.initialize(BADGER_DEV_MULTISIG, strategist, keeper, BADGER_DEV_MULTISIG)

@@ -23,17 +23,34 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
     assert want.balanceOf(sett) == 0
 
     want.approve(sett, MaxUint256, {"from": deployer})
-    ## Works
-    sett.deposit(depositAmount, {"from": deployer})
-
     assert sett.getPricePerFullShare() == 1e18
+    assert sett.totalSupply() == 0
 
-    ## Mint200k more shares
+    print("Initial ppfs")
+    print(1e18)
+
+    ## Mint 2k more shares
     sett.mintExtra(2000e18, {"from": governance})
+
+    assert sett.totalSupply() == 2000e18
 
     last_ppfs = sett.getPricePerFullShare()
     assert last_ppfs < 1e18 ## We diluted
 
+    print("Diluted PPFS")
+    print(1e18)
+
+    sett.addWant(depositAmount, {"from": deployer})
+
+    assert sett.getPricePerFullShare() > last_ppfs
+    last_ppfs = sett.getPricePerFullShare()
+
+    print("New ppfs 1")
+    print(sett.getPricePerFullShare())
+
     sett.addWant(restOfTokens, {"from": deployer})
 
     assert sett.getPricePerFullShare() > last_ppfs
+
+    print("New ppfs 2")
+    print(sett.getPricePerFullShare())

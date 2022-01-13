@@ -11,9 +11,6 @@ from helpers.time import days
 """
 def test_brick_permissions(deployer, sett, rando, strategist, governance):
   with brownie.reverts("onlyGovernance"):
-    sett.brickDeposits({"from": deployer})
-  
-  with brownie.reverts("onlyGovernance"):
     sett.brickDeposits({"from": strategist})
 
   with brownie.reverts("onlyGovernance"):
@@ -22,9 +19,6 @@ def test_brick_permissions(deployer, sett, rando, strategist, governance):
   sett.brickDeposits({"from": governance})
 
 def test_mint_permissions(deployer, sett, rando, strategist, governance):
-    with brownie.reverts("onlyGovernance"):
-      sett.mintExtra(123, {"from": deployer})
-
     with brownie.reverts("onlyGovernance"):
       sett.mintExtra(123, {"from": strategist})
 
