@@ -5,9 +5,12 @@ from helpers.SnapshotManager import SnapshotManager
 from helpers.time import days
 
 """
-  TODO: Put your tests here to prove the strat is good!
-  See test_harvest_flow, for the basic tests
-  See test_strategy_permissions, for tests at the permissions level
+  remBadger Lifecycle test
+  -> Deploy
+  -> Issue 2k shares
+  -> Make a seeding deposit
+  -> Check ppfs
+  -> Do more deposits
 """
 def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, governance):
     # Setup
