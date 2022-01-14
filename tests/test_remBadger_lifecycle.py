@@ -16,8 +16,7 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
     depositAmount =  600_000e18 ## 600k BADGER
 
     restOfTokens =  600_000e18 ## 600k BADGER
-    assert startingBalance >= depositAmount
-    assert startingBalance >= 0
+    assert startingBalance >= depositAmount + restOfTokens
     # End Setup
 
     assert want.balanceOf(sett) == 0
@@ -38,7 +37,7 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
     assert last_ppfs < 1e18 ## We diluted
 
     print("Diluted PPFS")
-    print(1e18)
+    print(last_ppfs)
 
     sett.addWant(depositAmount, {"from": deployer})
 
