@@ -24,7 +24,6 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
 
     assert want.balanceOf(sett) == 0
 
-    want.approve(sett, MaxUint256, {"from": deployer})
     assert sett.getPricePerFullShare() == 1e18
     assert sett.totalSupply() == 0
 
@@ -42,7 +41,7 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
     print("Diluted PPFS")
     print(last_ppfs)
 
-    sett.addWant(depositAmount, {"from": deployer})
+    want.transfer(sett, depositAmount, {"from": deployer})
 
     assert sett.getPricePerFullShare() > last_ppfs
     last_ppfs = sett.getPricePerFullShare()
@@ -50,7 +49,7 @@ def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, go
     print("New ppfs 1")
     print(sett.getPricePerFullShare())
 
-    sett.addWant(restOfTokens, {"from": deployer})
+    want.transfer(sett, restOfTokens, {"from": deployer})
 
     assert sett.getPricePerFullShare() > last_ppfs
 

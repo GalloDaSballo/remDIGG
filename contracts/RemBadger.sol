@@ -42,7 +42,6 @@ import "../interfaces/setth/IGac.sol";
     V1.Rem
     * RemBadger Version
     * Allows for one time dilution of ppfs by minting extra shares (briked after)
-    * AddedWant event to track increase in ppfs
     * DepositBricked to track when deposits can no longer be done (irreversible)
 */
 
@@ -70,8 +69,6 @@ contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgra
     bool public depositsEnded;
 
     event FullPricePerShareUpdated(uint256 value, uint256 indexed timestamp, uint256 indexed blockNumber);
-
-    event AddedWant(address indexed from, uint256 value, uint256 indexed timestamp, uint256 indexed blockNumber);
 
     event DepositBricked(uint256 indexed timestamp);
 
@@ -131,15 +128,6 @@ contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgra
 
         // Brick deposits from now on
         brickDeposits();
-    }
-
-    /// @dev Transfer funds from caller to this contract
-    /// @notice This will increase pricePerShare
-    function addWant(uint256 amount) external {
-        uint256 balanceBefore = token.balanceOf(address(this));
-        token.safeTransferFrom(msg.sender, address(this), amount);
-        uint256 balanceAfter = token.balanceOf(address(this));
-        emit AddedWant(msg.sender, balanceAfter.sub(balanceBefore), block.timestamp, block.number);
     }
 
     /// ===== Modifiers =====
