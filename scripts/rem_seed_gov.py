@@ -28,9 +28,8 @@ GOV = "0xB65cef03b9B89f99517643226d76e286ee999e77" ## Dev Multi
 WHALE = "0x4441776e6a5d61fa024a5117bfc26b953ad1f425"
 def main():
   """ 
-    Mint 2k shares
-    Send them to Multi
-    Renounce ownership of Vault and Strategy
+    Send funds to remBADGER
+    Verify share valiue changes as expected
   """
 
 
