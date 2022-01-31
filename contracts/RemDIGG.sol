@@ -91,7 +91,7 @@ contract RemDIGG is ERC20Upgradeable, SettAccessControlDefended, PausableUpgrade
     ) public initializer whenNotPaused {
         IERC20Detailed namedToken = IERC20Detailed(_token);
 
-        __ERC20_init("RemDIGG", "RemDIGG");
+        __ERC20_init("remDIGG", "remDIGG");
 
         token = IERC20Upgradeable(_token);
         governance = _governance;
