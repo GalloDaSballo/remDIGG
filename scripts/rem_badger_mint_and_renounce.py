@@ -2,7 +2,7 @@ from brownie import (
     accounts,
     network,
     BrikedStrategy,
-    RemBadger,
+    RemDIGG,
     AdminUpgradeabilityProxy,
     Controller,
     BadgerRegistry,
@@ -33,7 +33,7 @@ def main():
 
   dev = connect_account()
 
-  v = RemBadger.at(VAULT)
+  v = RemDIGG.at(VAULT)
   s = BrikedStrategy.at(STRATEGY)
 
   v.mintExtra(TO_MINT, {"from": dev})

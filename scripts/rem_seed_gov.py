@@ -2,7 +2,7 @@ from brownie import (
     accounts,
     network,
     BrikedStrategy,
-    RemBadger,
+    RemDIGG,
     AdminUpgradeabilityProxy,
     Controller,
     BadgerRegistry,
@@ -33,7 +33,7 @@ def main():
   """
 
 
-  v = RemBadger.at(VAULT)
+  v = RemDIGG.at(VAULT)
 
   whale = accounts.at(WHALE, force=True)
   gov = accounts.at(GOV, force=True)
