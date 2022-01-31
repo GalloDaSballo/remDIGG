@@ -7,10 +7,10 @@ from helpers.time import days
 """
   remBadger Lifecycle test
   -> Deploy
-  -> Issue 2k shares
-  -> Make a seeding deposit
+  -> Issue 52.94 shares
   -> Check ppfs
-  -> Do more deposits
+  -> Do restitution deposit
+  -> Verify shares are 1to1
 """
 TO_MINT = 52.94e9 ## 9 Decimals for DIGG
 TO_SEED = 52.94e9 ## 9 Decimals for DIGG
