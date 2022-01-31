@@ -2,7 +2,7 @@ from brownie import (
     accounts,
     interface,
     Controller,
-    RemBadger,
+    RemDIGG,
     BrikedStrategy,
     ERC20Upgradeable
 )
@@ -35,7 +35,7 @@ def deployed():
     controller = Controller.deploy({"from": deployer})
     controller.initialize(BADGER_DEV_MULTISIG, strategist, keeper, BADGER_DEV_MULTISIG)
 
-    sett = RemBadger.deploy({"from": deployer})
+    sett = RemDIGG.deploy({"from": deployer})
     sett.initialize(
         WANT,
         controller,

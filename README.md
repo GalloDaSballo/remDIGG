@@ -1,4 +1,4 @@
-# remBADGER
+# RemDIGG
 
 Miro board for setup:
 https://miro.com/app/board/uXjVOWssa70=/

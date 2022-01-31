@@ -47,7 +47,7 @@ import "../interfaces/setth/IGac.sol";
     * Same deal, just different token
 */
 
-contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgradeable {
+contract RemDIGG is ERC20Upgradeable, SettAccessControlDefended, PausableUpgradeable {
     using SafeERC20Upgradeable for IERC20Upgradeable;
     using AddressUpgradeable for address;
     using SafeMathUpgradeable for uint256;
@@ -91,7 +91,7 @@ contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgra
     ) public initializer whenNotPaused {
         IERC20Detailed namedToken = IERC20Detailed(_token);
 
-        __ERC20_init("remBADGER", "remBADGER");
+        __ERC20_init("RemDIGG", "RemDIGG");
 
         token = IERC20Upgradeable(_token);
         governance = _governance;

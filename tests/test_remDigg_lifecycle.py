@@ -5,7 +5,7 @@ from helpers.SnapshotManager import SnapshotManager
 from helpers.time import days
 
 """
-  remBadger Lifecycle test
+  RemDIGG Lifecycle test
   -> Deploy
   -> Issue 52.94 shares
   -> Check ppfs

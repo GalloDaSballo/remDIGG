@@ -28,7 +28,7 @@ GOV = "0xB65cef03b9B89f99517643226d76e286ee999e77" ## Dev Multi
 WHALE = "0x4441776e6a5d61fa024a5117bfc26b953ad1f425"
 def main():
   """ 
-    Send funds to remBADGER
+    Send funds to RemDIGG
     Verify share valiue changes as expected
   """
 
