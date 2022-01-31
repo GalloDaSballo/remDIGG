@@ -43,6 +43,8 @@ import "../interfaces/setth/IGac.sol";
     * RemBadger Version
     * Allows for one time dilution of ppfs by minting extra shares (briked after)
     * DepositBricked to track when deposits can no longer be done (irreversible)
+    V1.RemDIGG
+    * Same deal, just different token
 */
 
 contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgradeable {
@@ -50,7 +52,6 @@ contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgra
     using AddressUpgradeable for address;
     using SafeMathUpgradeable for uint256;
 
-    address constant public MULTISIG = 0x9faA327AAF1b564B569Cb0Bc0FDAA87052e8d92c;
     IGac public constant GAC = IGac(0x9c58B0D88578cd75154Bdb7C8B013f7157bae35a); // Set in initializer because of tests is unchangeable (because contract is upgradeable)
 
     IERC20Upgradeable public token;
@@ -151,7 +152,7 @@ contract RemBadger is ERC20Upgradeable, SettAccessControlDefended, PausableUpgra
     /// ===== View Functions =====
 
     function version() public view returns (string memory) {
-        return "1.4r - remBadger";
+        return "1.4r - remDIGG";
     }
 
     function getPricePerFullShare() public virtual view returns (uint256) {

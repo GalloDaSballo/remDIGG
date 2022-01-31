@@ -12,46 +12,36 @@ from helpers.time import days
   -> Check ppfs
   -> Do more deposits
 """
+TO_MINT = 52.94e9 ## 9 Decimals for DIGG
+TO_SEED = 52.94e9 ## 9 Decimals for DIGG
+
 def test_lifecycle_for_rem_badger(deployer, sett, strategy, controller, want, governance):
     # Setup
     startingBalance = want.balanceOf(deployer)
 
-    depositAmount =  600_000e18 ## 600k BADGER
-
-    restOfTokens =  600_000e18 ## 600k BADGER
-    assert startingBalance >= depositAmount + restOfTokens
+    depositAmount = TO_MINT
+    assert startingBalance >= depositAmount
     # End Setup
 
     assert want.balanceOf(sett) == 0
 
-    assert sett.getPricePerFullShare() == 1e18
+    assert sett.getPricePerFullShare() == 1e18 ## Vault is 18 decimals
     assert sett.totalSupply() == 0
 
     print("Initial ppfs")
     print(1e18)
 
     ## Mint 2k more shares
-    sett.mintExtra(2000e18, {"from": governance})
+    sett.mintExtra(TO_SEED, {"from": governance})
 
-    assert sett.totalSupply() == 2000e18
+    assert sett.totalSupply() == TO_SEED
 
     last_ppfs = sett.getPricePerFullShare()
-    assert last_ppfs < 1e18 ## We diluted
+    assert last_ppfs == 0 ## Diluted with no shares
 
     print("Diluted PPFS")
     print(last_ppfs)
 
     want.transfer(sett, depositAmount, {"from": deployer})
 
-    assert sett.getPricePerFullShare() > last_ppfs
-    last_ppfs = sett.getPricePerFullShare()
-
-    print("New ppfs 1")
-    print(sett.getPricePerFullShare())
-
-    want.transfer(sett, restOfTokens, {"from": deployer})
-
-    assert sett.getPricePerFullShare() > last_ppfs
-
-    print("New ppfs 2")
-    print(sett.getPricePerFullShare())
+    assert sett.getPricePerFullShare() == 1e18 ## Restitution has happened

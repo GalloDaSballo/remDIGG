@@ -76,7 +76,7 @@ def deployed():
     lpComponent = interface.IERC20(LP_COMPONENT)
     rewardToken = interface.IERC20(REWARD_TOKEN)
     
-    whale = accounts.at("0x4441776e6a5d61fa024a5117bfc26b953ad1f425", force=True)
+    whale = accounts.at("0x4a8651F2edD68850B944AD93f2c67af817F39F62", force=True)
     want.transfer(deployer, want.balanceOf(whale), {"from": whale})
 
 

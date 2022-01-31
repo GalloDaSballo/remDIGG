@@ -6,7 +6,6 @@ https://miro.com/app/board/uXjVOWssa70=/
 A fork of Sett-h with:
 - Ability to brickDeposits (irreversible)
 - One time extra shares mint (to bring ppfs below 1)
-- Function to send more underlying to the vault (to increase ppfs)
 - Using BrikedStrategy (does nothing, no risk)
 
 ## TODO
