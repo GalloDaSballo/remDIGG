@@ -9,7 +9,7 @@ A fork of Sett-h with:
 - Using BrikedStrategy (does nothing, no risk)
 
 ## TODO
-[] Tests
+[X] Tests
  [X] Mint and Brick permissions
  [X] Brick blocks deposits
  [X] Brick doesn't block withdraw
@@ -17,11 +17,11 @@ A fork of Sett-h with:
  [X] Minting mints exactly amount specified
  [X] Ppfs moves as expected (prev balance / new total supply)
  
-[] Lifetime workflow
+[X] Lifetime workflow
  - Deploy
  - Seed with initial funds
  - Issue more shares
- [] Scripts
+ [X] Scripts
 
 # Badger Strategy V1 Brownie Mix
 
