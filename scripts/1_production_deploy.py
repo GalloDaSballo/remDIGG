@@ -72,7 +72,7 @@ def main():
     )
 
     # Wire up vault and strategy to test controller
-    wire_up_test_controller(controller, vault, strategy, dev)
+    # wire_up_test_controller(controller, vault, strategy, dev)
 
 
 def deploy_controller(dev, proxyAdmin):
@@ -123,9 +123,7 @@ def deploy_vault(controller, governance, keeper, guardian, dev, proxyAdmin):
 
     print("Vault Arguments: ", args)
 
-    vault_logic = RemDIGG.at(
-        "0xAF0B504BD20626d1fd57F8903898168FCE7ecbc8"
-    )  # RemDIGG Logic
+    vault_logic = RemDIGG.deploy({"from": dev})
 
     vault_proxy = AdminUpgradeabilityProxy.deploy(
         vault_logic,

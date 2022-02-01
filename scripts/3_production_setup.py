@@ -34,8 +34,8 @@ def main():
     dev = connect_account()
 
     # Add deployed Strategy and Vault contracts here:
-    strategy = BrikedStrategy.at("0x809990849D53a5109e0cb9C446137793B9f6f1Eb")
-    vault = RemDIGG.at("0x6B2d4c4bb50274c5D4986Ff678cC971c0260E967")
+    strategy = BrikedStrategy.at("0x4055D395361E73530D43c9D4F18b0668fe4B5b91")
+    vault = RemDIGG.at("0x8B2a18b6400338272FDD1B991F5163E21723AF60")
 
     assert strategy.paused() == False
     assert vault.paused() == False
@@ -49,7 +49,7 @@ def main():
     governance = registry.get("governance")
     guardian = registry.get("guardian")
     keeper = registry.get("keeper")
-    controller = registry.get("controller")
+    controller = "0x3F61344BA56df00dad9bBcA05d98CA2AeC43Ba0B" ## Restitution Controller
     badgerTree = registry.get("badgerTree")
 
     assert governance != AddressZero
@@ -87,14 +87,14 @@ def set_parameters(dev, strategy, vault, governance, guardian, keeper, controlle
     console.print("[green]Controller existing or set at: [/green]", controller)
 
     # Set Fees
-    if strategy.performanceFeeGovernance() != 1000:
-        strategy.setPerformanceFeeGovernance(1000, {"from": dev})
+    if strategy.performanceFeeGovernance() != 0:
+        strategy.setPerformanceFeeGovernance(0, {"from": dev})
         time.sleep(sleep_between_tx)
-    if strategy.performanceFeeStrategist() != 1000:
-        strategy.setPerformanceFeeStrategist(1000, {"from": dev})
+    if strategy.performanceFeeStrategist() != 0:
+        strategy.setPerformanceFeeStrategist(0, {"from": dev})
         time.sleep(sleep_between_tx)
-    if strategy.withdrawalFee() != 10:
-        strategy.setWithdrawalFee(10, {"from": dev})
+    if strategy.withdrawalFee() != 0:
+        strategy.setWithdrawalFee(0, {"from": dev})
         time.sleep(sleep_between_tx)
 
     console.print("[green]Fees existing or set at: [/green]", "1000, 1000, 10")
