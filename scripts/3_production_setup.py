@@ -35,7 +35,7 @@ def main():
 
     # Add deployed Strategy and Vault contracts here:
     strategy = BrikedStrategy.at("0x4055D395361E73530D43c9D4F18b0668fe4B5b91")
-    vault = RemDIGG.at("0x8B2a18b6400338272FDD1B991F5163E21723AF60")
+    vault = RemDIGG.at("0x99F39D495C6A5237f43602f3Ab5F49786E46c9B0")
 
     assert strategy.paused() == False
     assert vault.paused() == False

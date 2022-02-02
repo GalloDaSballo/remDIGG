@@ -17,10 +17,10 @@ from rich.console import Console
 
 console = Console()
 
-VAULT = "0x8B2a18b6400338272FDD1B991F5163E21723AF60"
+VAULT = "0x99F39D495C6A5237f43602f3Ab5F49786E46c9B0"
 STRATEGY = "0x4055D395361E73530D43c9D4F18b0668fe4B5b91"
 
-TO_MINT = 52.94e9 ##
+TO_MINT = 52942035500000000000 ##
 
 RECIPIENT = "0xB65cef03b9B89f99517643226d76e286ee999e77" ## Dev Multi
 
@@ -45,8 +45,10 @@ def main():
         s.setPerformanceFeeStrategist(0, {"from": dev})
     if s.withdrawalFee() != 0:
         s.setWithdrawalFee(0, {"from": dev})
-    v.setGovernance(RECIPIENT, {"from": dev})
-    s.setGovernance(RECIPIENT, {"from": dev})
+    if v.governance() != RECIPIENT:
+        v.setGovernance(RECIPIENT, {"from": dev})
+    if s.governance() != RECIPIENT:
+        s.setGovernance(RECIPIENT, {"from": dev})
 
   
     ## Verify balances

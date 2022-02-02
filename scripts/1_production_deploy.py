@@ -61,15 +61,15 @@ def main():
     )
 
     # Deploy Strategy
-    strategy = deploy_strategy(
-        controller.address,
-        dev.address,  # Deployer will be set as governance for testing stage
-        strategist,
-        keeper,
-        guardian,
-        dev,
-        proxyAdmin,
-    )
+    # strategy = deploy_strategy(
+    #     controller.address,
+    #     dev.address,  # Deployer will be set as governance for testing stage
+    #     strategist,
+    #     keeper,
+    #     guardian,
+    #     dev,
+    #     proxyAdmin,
+    # )
 
     # Wire up vault and strategy to test controller
     # wire_up_test_controller(controller, vault, strategy, dev)
@@ -123,7 +123,7 @@ def deploy_vault(controller, governance, keeper, guardian, dev, proxyAdmin):
 
     print("Vault Arguments: ", args)
 
-    vault_logic = RemDIGG.deploy({"from": dev})
+    vault_logic = RemDIGG.at("0x776a1f1107f8f805cAE0440d51b22aC33AF3EE61")
 
     vault_proxy = AdminUpgradeabilityProxy.deploy(
         vault_logic,
@@ -164,7 +164,7 @@ def deploy_strategy(
 
     print("Strategy Arguments: ", args)
 
-    strat_logic = BrikedStrategy.deploy({"from": dev})
+    strat_logic = BrikedStrategy.at("0x776a1f1107f8f805cAE0440d51b22aC33AF3EE61")
     time.sleep(sleep_between_tx)
 
     strat_proxy = AdminUpgradeabilityProxy.deploy(
